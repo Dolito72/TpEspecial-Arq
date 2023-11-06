@@ -1,0 +1,761 @@
+{
+	"info": {
+		"_postman_id": "22d71e2a-a171-4d6c-a0f9-2033dbe03e15",
+		"name": "MicroservicioAdmMant",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24154023",
+		"_collection_link": "https://dark-trinity-964401.postman.co/workspace/My-Workspace~61826c9b-9862-40fd-819f-e526689da1b9/collection/24154023-22d71e2a-a171-4d6c-a0f9-2033dbe03e15?action=share&source=collection_link&creator=24154023"
+	},
+	"item": [
+		{
+			"name": "administrador",
+			"item": [
+				{
+					"name": "serviciosMonopatin",
+					"item": [
+						{
+							"name": "agregarMonopatin",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ubicacion\": {\r\n        \"latitud\": -37.32712,\r\n        \"longitud\": -59.146741\r\n    },\r\n    \"estado\": \"disponible\",\r\n    \"disponible\": true,\r\n    \"kmsRecorridos\": 99999,\r\n    \"kmsMantenimiento\": 103,\r\n    \"tiempoUsoParaMant\": 1009.0,\r\n    \"tiempoUsoTotal\": 14000,\r\n    \"tiempoPausado\": 220,\r\n    \"cantidadViajes\": 22\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8004/api/administrador/agregarMonopatin",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8004",
+									"path": [
+										"api",
+										"administrador",
+										"agregarMonopatin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "quitarMonopatin",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8004/api/administrador/eliminarMonopatin/32",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8004",
+									"path": [
+										"api",
+										"administrador",
+										"eliminarMonopatin",
+										"32"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "monopatinesPorKm",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8004/api/administrador/monopatines/porKm/300",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8004",
+									"path": [
+										"api",
+										"administrador",
+										"monopatines",
+										"porKm",
+										"300"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "monopatinesPorTiempoSinPausa",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8004/api/administrador/monopatines/porTiempoSinPausa/10000",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8004",
+									"path": [
+										"api",
+										"administrador",
+										"monopatines",
+										"porTiempoSinPausa",
+										"10000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "monopatinesPorTiempoConPausa",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8004/api/administrador/monopatines/porTiempoConPausa/10000",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8004",
+									"path": [
+										"api",
+										"administrador",
+										"monopatines",
+										"porTiempoConPausa",
+										"10000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "monopatinesConViajes",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8004/api/administrador/monopatines/conViajes/5/2023",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8004",
+									"path": [
+										"api",
+										"administrador",
+										"monopatines",
+										"conViajes",
+										"5",
+										"2023"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "monopatinesOperacionMantenimiento",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8004/api/administrador/monopatines/enOperacionMantenimiento",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8004",
+									"path": [
+										"api",
+										"administrador",
+										"monopatines",
+										"enOperacionMantenimiento"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "getAdministrador",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"direccion\": \"Nueva propiedda\",\r\n        \"habitaciones\": 4,\r\n        \"banios\": 2,\r\n        \"patio\": 1,\r\n        \"tipo_contrato\": \"Venta\",\r\n        \"moneda\": \"USD\",\r\n        \"precio\": 120000,\r\n        \"tipo\": 1\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8004/api/administrador",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8004",
+							"path": [
+								"api",
+								"administrador"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAdministradorId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8004/api/administrador/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8004",
+							"path": [
+								"api",
+								"administrador",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AltaAdministrador",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rol\": \"admin\",\r\n    \"nombreYApellido\": \"Pedro Perez\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8004/api/administrador",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8004",
+							"path": [
+								"api",
+								"administrador"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "putAdministrador",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 5,\r\n    \"rol\": \"administrador\",\r\n    \"nombreYApellido\": \"Mariana Peraltas\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8004/api/administrador/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8004",
+							"path": [
+								"api",
+								"administrador",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteAdministrador",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8004/api/administrador/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8004",
+							"path": [
+								"api",
+								"administrador",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "quitarParada",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8004/api/administrador/paradas/quitarParada/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8004",
+							"path": [
+								"api",
+								"administrador",
+								"paradas",
+								"quitarParada",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "agregarParada",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Parada422\",\r\n    \"ubicacion\": {\r\n        \"latitud\": 6000.0,\r\n        \"longitud\": 9000.0\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8004/api/administrador/paradas/agregarParada",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8004",
+							"path": [
+								"api",
+								"administrador",
+								"paradas",
+								"agregarParada"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "anularCuenta",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8004/api/administrador/cuentas/anularCuenta/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8004",
+							"path": [
+								"api",
+								"administrador",
+								"cuentas",
+								"anularCuenta",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modificarTarifaEnFecha",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 2,\r\n    \"tarifaEstandar\": 78000.0,\r\n    \"tarifaEspecial\": 1500.0,\r\n    \"fechaEntradaVigencia\": \"2023-07-01T13:10:00.000+00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8004/api/administrador/modificarTarifaEnFecha",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8004",
+							"path": [
+								"api",
+								"administrador",
+								"modificarTarifaEnFecha"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "definirTarifaComun",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8004/api/administrador/definirTarifaComun/2/95003",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8004",
+							"path": [
+								"api",
+								"administrador",
+								"definirTarifaComun",
+								"2",
+								"95003"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "definirTarifaEspecial",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8004/api/administrador/definirTarifaEspecial/2/19500",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8004",
+							"path": [
+								"api",
+								"administrador",
+								"definirTarifaEspecial",
+								"2",
+								"19500"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "facturacionEntreMeses",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8004/api/administrador/facturacion/08/12",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8004",
+							"path": [
+								"api",
+								"administrador",
+								"facturacion",
+								"08",
+								"12"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "mantenimiento",
+			"item": [
+				{
+					"name": "serviciosMonopatin",
+					"item": [
+						{
+							"name": "agregarMonopatinAMantenimiento",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8004/api/mantenimiento/agregarMonopatinAMantenimiento/11",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8004",
+									"path": [
+										"api",
+										"mantenimiento",
+										"agregarMonopatinAMantenimiento",
+										"11"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "finalizarMantenimiento",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8004/api/mantenimiento/finalizarMantenimiento/13",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8004",
+									"path": [
+										"api",
+										"mantenimiento",
+										"finalizarMantenimiento",
+										"13"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "getMantenimientos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8004/api/mantenimiento",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8004",
+							"path": [
+								"api",
+								"mantenimiento"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getMantenimientoId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8004/api/mantenimiento/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8004",
+							"path": [
+								"api",
+								"mantenimiento",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AltaMantenimiento",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"idMonopatin\": 2,\r\n        \"fechaHoraInicioMantenimiento\": \"2023-03-23T13:10:00.000+00:00\",\r\n        \"fechaHoraFinalizacionMantenimiento\": \"2023-03-28T13:10:00.000+00:00\",\r\n        \"reparado\": true\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8004/api/mantenimiento",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8004",
+							"path": [
+								"api",
+								"mantenimiento"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteMantenimiento",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8004/api/mantenimiento/12",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8004",
+							"path": [
+								"api",
+								"mantenimiento",
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "putMantenimiento",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 7,\r\n    \"idMonopatin\": 4,\r\n    \"fechaHoraInicioMantenimiento\": \"2023-07-20T13:00:00.000+00:00\",\r\n    \"fechaHoraFinalizacionMantenimiento\": \"2023-07-23T13:00:00.000+00:00\",\r\n    \"reparado\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8004/api/mantenimiento/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8004",
+							"path": [
+								"api",
+								"mantenimiento",
+								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "tarifa",
+			"item": [
+				{
+					"name": "definirTarifaComun",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8004/api/tarifas/definirTarifaComun/2/5500",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8004",
+							"path": [
+								"api",
+								"tarifas",
+								"definirTarifaComun",
+								"2",
+								"5500"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "altaTarifa",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tarifaEstandar\": 1000.0,\r\n    \"tarifaEspecial\": 500.0,\r\n    \"fechaEntradaVigencia\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8004/api/tarifas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8004",
+							"path": [
+								"api",
+								"tarifas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "definirTarifaEspecial",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8004/api/tarifas/definirTarifaEspecial/2/8500",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8004",
+							"path": [
+								"api",
+								"tarifas",
+								"definirTarifaEspecial",
+								"2",
+								"8500"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,589 @@
+{
+	"info": {
+		"_postman_id": "f1faf2d9-3493-4496-900f-4c849949398f",
+		"name": "MicroservicioMonopatin",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24154023",
+		"_collection_link": "https://dark-trinity-964401.postman.co/workspace/My-Workspace~61826c9b-9862-40fd-819f-e526689da1b9/collection/24154023-f1faf2d9-3493-4496-900f-4c849949398f?action=share&source=collection_link&creator=24154023"
+	},
+	"item": [
+		{
+			"name": "paradas",
+			"item": [
+				{
+					"name": "getParadas",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "admin@prueba.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "12345",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://localhost:8003/api/paradas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8003",
+							"path": [
+								"api",
+								"paradas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getParadaId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8003/api/paradas/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8003",
+							"path": [
+								"api",
+								"paradas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AltaParada",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Parada444\",\r\n    \"ubicacion\": {\r\n        \"latitud\": 6000.0,\r\n        \"longitud\": 9000.0\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8003/api/paradas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8003",
+							"path": [
+								"api",
+								"paradas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteParada",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8003/api/paradas/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8003",
+							"path": [
+								"api",
+								"paradas",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateParada",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n        \"id\": 4,\r\n        \"nombre\": \"parada 40\",\r\n        \"ubicacion\": {\r\n            \"latitud\": -37.32712,\r\n            \"longitud\": -59.146721\r\n        }\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8003/api/paradas/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8003",
+							"path": [
+								"api",
+								"paradas",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "monopatines",
+			"item": [
+				{
+					"name": "getMonopatinId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8003/api/monopatines/10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8003",
+							"path": [
+								"api",
+								"monopatines",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getMonopatines",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8003/api/monopatines",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8003",
+							"path": [
+								"api",
+								"monopatines"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AltaMonopatin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ubicacion\": {\r\n        \"latitud\": 7000.0,\r\n        \"longitud\": 8000.0\r\n    },\r\n    \"estado\": \"disponible\",\r\n    \"disponible\": true,\r\n    \"kmsRecorridos\": 3210,\r\n    \"kmsMantenimiento\": 110,\r\n    \"tiempoUsoParaMant\": 10009.0,\r\n    \"tiempoUsoTotal\": 4000,\r\n    \"tiempoPausado\": 220,\r\n    \"cantidadViajes\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8003/api/monopatines",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8003",
+							"path": [
+								"api",
+								"monopatines"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateMonopatin",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 10,\r\n        \"ubicacion\": {\r\n            \"latitud\": -37.32712,\r\n            \"longitud\": -59.146741\r\n        },\r\n        \"estado\": \"disponible\",\r\n        \"disponible\": true,\r\n        \"kmsRecorridos\": 189.0,\r\n        \"kmsMantenimiento\": 179.0,\r\n        \"tiempoUsoParaMant\": 0.0,\r\n        \"tiempoUsoTotal\": 189420,\r\n        \"tiempoPausado\": 2010,\r\n        \"cantidadViajes\": 8\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8003/api/monopatines/10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8003",
+							"path": [
+								"api",
+								"monopatines",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteMonopatin",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8003/api/monopatines/11",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8003",
+							"path": [
+								"api",
+								"monopatines",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "monopatinesPorKm",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8003/api/monopatines/porKm/100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8003",
+							"path": [
+								"api",
+								"monopatines",
+								"porKm",
+								"100"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "monopatinesPorTiempoSinPausa",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8003/api/monopatines/porTiempoSinPausa/900",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8003",
+							"path": [
+								"api",
+								"monopatines",
+								"porTiempoSinPausa",
+								"900"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "monopatinesPorTiempoConPausa",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8003/api/monopatines/porTiempoConPausa/900",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8003",
+							"path": [
+								"api",
+								"monopatines",
+								"porTiempoConPausa",
+								"900"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "monopatinesConViajes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8003/api/monopatines/conViajes/5/2023",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8003",
+							"path": [
+								"api",
+								"monopatines",
+								"conViajes",
+								"5",
+								"2023"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "monopatineEnOperacionYMantenimiento",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8003/api/monopatines/enOperacionMantenimiento",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8003",
+							"path": [
+								"api",
+								"monopatines",
+								"enOperacionMantenimiento"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "monopatinesCerca",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8003/api/monopatines/obtenerMonopatinesCerca/-37.327216/-59.130739",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8003",
+							"path": [
+								"api",
+								"monopatines",
+								"obtenerMonopatinesCerca",
+								"-37.327216",
+								"-59.130739"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "viajes",
+			"item": [
+				{
+					"name": "getViajes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8003/api/viajes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8003",
+							"path": [
+								"api",
+								"viajes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getViajesId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8003/api/viajes/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8003",
+							"path": [
+								"api",
+								"viajes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AltaViaje",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"inicioViaje\": \"2023-07-23T13:10:00.000+00:00\",\r\n        \"finViaje\": \"2023-07-23T13:00:00.000+00:00\",\r\n        \"costo\": 75700.0,\r\n        \"monopatinId\": 13,\r\n        \"cuentaId\": 2,\r\n        \"usuarioId\": 2,\r\n        \"paradaFinalId\": 2,\r\n        \"kmsRecorridos\": 10.0,\r\n        \"tiempoPausa\": 0,\r\n        \"pausaActiva\": false\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8003/api/viajes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8003",
+							"path": [
+								"api",
+								"viajes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteViaje",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8003/api/viajes/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8003",
+							"path": [
+								"api",
+								"viajes",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateViaje",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"inicioViaje\": \"2023-07-23T13:10:00.000+00:00\",\r\n        \"finViaje\": \"2023-07-23T13:00:00.000+00:00\",\r\n        \"costo\": 152700.0,\r\n        \"monopatinId\": 1,\r\n        \"cuentaId\": 1,\r\n        \"usuarioId\": 1,\r\n        \"paradaFinalId\": 1,\r\n        \"kmsRecorridos\": 20.0,\r\n        \"tiempoPausa\": 0,\r\n        \"pausaActiva\": false\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8003/api/viajes/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8003",
+							"path": [
+								"api",
+								"viajes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "facturacionViajes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8003/api/viajes/facturacion/05/12",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8003",
+							"path": [
+								"api",
+								"viajes",
+								"facturacion",
+								"05",
+								"12"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "conectarUsuario",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8003/api/viajes/usuarios/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8003",
+					"path": [
+						"api",
+						"viajes",
+						"usuarios",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
