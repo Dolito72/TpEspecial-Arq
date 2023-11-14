@@ -22,6 +22,9 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.integrador.repository.AdministradorRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -46,8 +49,6 @@ public class AdministradorService {
 	private TarifaRepository tarifaRepository;
 	@Autowired
     private  RestTemplate restTemplate;
-	
-	
 	
     public AdministradorService(AdministradorRepository administradorRepository, TarifaRepository tarifaRepository) {
 		this.administradorRepository = administradorRepository;

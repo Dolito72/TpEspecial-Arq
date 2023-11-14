@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.integrador.domain.Monopatin;
 import com.integrador.domain.Tarifa;
@@ -21,6 +22,9 @@ import com.integrador.service.dto.monopatinConViajes.MonopatinConViajesResponseD
 import com.integrador.service.dto.parada.ParadaRequestDto;
 import com.integrador.service.dto.tarifa.TarifaRequestDto;
 import com.integrador.service.dto.tarifa.TarifaResponseDto;
+
+import io.swagger.v3.oas.annotations.Operation;
+
 import com.integrador.domain.Administrador;
 
 import java.util.Date;
@@ -33,6 +37,11 @@ public class AdministradorController {
 	@Autowired
     private AdministradorService administradorService;
 
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public ModelAndView method() {
+	    return new ModelAndView("redirect:/swagger-ui.html");
+	}
+	
 	
     @GetMapping("/{id}")
     public ResponseEntity<?> getById(@PathVariable Long id){
@@ -82,6 +91,7 @@ public class AdministradorController {
     }
     
     //agregar monopatin
+    @Operation(summary = "Da de alta un nuevo monopatin.", description = "Se comunica con el microservicios de monopatines para dar de alta un nuevo monopatin.")
     @PostMapping("/agregarMonopatin")
     public ResponseEntity<?> agregarMonopatin (@RequestBody @Validated Monopatin request) {
 	    try {
