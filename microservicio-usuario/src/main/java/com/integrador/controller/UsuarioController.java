@@ -24,6 +24,7 @@ import com.integrador.service.dto.usuario.UsuarioRequestDto;
 import com.integrador.service.dto.usuario.UsuarioResponseDto;
 import com.integrador.service.dto.usuarioCuenta.UsuarioCuentaRequestDto;
 
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -33,6 +34,8 @@ public class UsuarioController {
 	@Autowired
 	private  UsuarioService usuarioService;
 	
+	
+	@Operation(summary = "Usuarios find All", description = "Me trae todos los usuarios.")
 	@GetMapping("")
     public ResponseEntity<?> findAll(){
 		try {
@@ -45,7 +48,7 @@ public class UsuarioController {
         }
     }
 
-	
+	@Operation(summary = "Usuario by Id", description = "Me trae un usuario por su Id.")
 	 @GetMapping("/{id}")
 	   public ResponseEntity<?> getById(@PathVariable Long id){
 	        try{
@@ -57,6 +60,7 @@ public class UsuarioController {
 	  }
 
     //ver si funciona
+	@Operation(summary = "Update usuario", description = "Modifica un usuario.")
     @PostMapping("")
     public ResponseEntity<?> save( @RequestBody @Validated UsuarioRequestDto request ){
         try {
@@ -67,6 +71,7 @@ public class UsuarioController {
     }
     
   //ver si funciona
+	@Operation(summary = "Asociar un usuario a una cuenta", description = "Da de alta un usuario en una cuenta.")
     @PostMapping("/asociarCuenta")
     public ResponseEntity<?> asociarCuenta( @RequestBody @Validated UsuarioCuentaRequestDto request ){
         try {
@@ -75,7 +80,8 @@ public class UsuarioController {
             return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body("Ocurrio un error, revise los campos ingresados");
         }
     }
-    
+	
+	@Operation(summary = "Eliminar cuenta", description = "Elimina una cuenta.")
     @DeleteMapping("/quitarCuenta")
     public ResponseEntity<?> quitarCuenta(@RequestBody @Validated UsuarioCuentaRequestDto request){
         try{
@@ -86,6 +92,7 @@ public class UsuarioController {
         }
     }
     
+	@Operation(summary = "Eliminar usuario de cuenta", description = "Elimina un usuario de una cuenta.")
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id){
         try{
@@ -97,6 +104,7 @@ public class UsuarioController {
     }
     
     //chequear
+	@Operation(summary = "Update usuario", description = "Modifica un usuario.")
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@PathVariable Long id, @RequestBody @Validated UsuarioRequestDto request) {
         try {
@@ -110,6 +118,8 @@ public class UsuarioController {
         }
     }
     
+	@Operation(summary = "Monopatines cerca", description = "Se conecta al microservicio monopatin, y obtiene los"
+			+ "monopatines que se encuentran cerca de una ubicación pasada por parámetro.")
     @GetMapping("/obtenerMonopatinCerca/{latitud}/{longitud}")
     public List<MonopatinesCercaResponseDto> ObtenerMonopatinesCerca(@PathVariable double latitud, @PathVariable double longitud){
         try{

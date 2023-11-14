@@ -13,13 +13,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.integrador.domain.Cuenta;
 import com.integrador.service.CuentaService;
 import com.integrador.service.dto.cuenta.CuentaRequestDto;
 import com.integrador.service.dto.cuenta.CuentaResponseDto;
-
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -34,7 +36,14 @@ public class CuentaController {
         return this.cuentaService.findAll();
     }
 
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public ModelAndView method() {
+	    return new ModelAndView("redirect:/swagger-ui.html");
+	}
 	
+	
+	
+	@Operation(summary = "Obtiene una cuenta por su ID", description = "Devuelve una cuenta basada en su ID.")
 	 @GetMapping("/{id}")
 	   public ResponseEntity<?> getById(@PathVariable Long id){
 	        try{
@@ -46,6 +55,7 @@ public class CuentaController {
 	   }
 
     //ver si funciona
+	@Operation(summary = "Alta cuenta", description = "Da de alta una cuenta.")
     @PostMapping("")
     public ResponseEntity<?> save( @RequestBody @Validated CuentaRequestDto request ){
         try {
@@ -54,7 +64,8 @@ public class CuentaController {
             return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body("Ocurrio un error, revise los campos ingresados");
         }
     }
-    
+	
+	@Operation(summary = "Eliminar cuenta", description = "Elimina una cuenta.")
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id){
         try{
@@ -66,6 +77,7 @@ public class CuentaController {
     }
     
     //chequear
+	@Operation(summary = "Update cuenta", description = "Modificar una cuenta.")
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@PathVariable Long id, @RequestBody @Validated CuentaRequestDto request) {
         try {

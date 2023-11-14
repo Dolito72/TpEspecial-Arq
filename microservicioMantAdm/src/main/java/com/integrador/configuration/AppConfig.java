@@ -22,7 +22,7 @@ public class AppConfig {
     public OpenAPI customOpenAPI(@Value("${application-description}") String description,
                                  @Value("${application-version}") String version) {
         return new OpenAPI()
-                .info(new Info().title("Administration API")
+                .info(new Info().title("Api Administración-Mantenimiento")
                         .version(version)
                         .description(description)
                         .license(new License().name("Administration API Licence")));

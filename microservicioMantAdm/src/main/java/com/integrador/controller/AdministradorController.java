@@ -22,9 +22,7 @@ import com.integrador.service.dto.monopatinConViajes.MonopatinConViajesResponseD
 import com.integrador.service.dto.parada.ParadaRequestDto;
 import com.integrador.service.dto.tarifa.TarifaRequestDto;
 import com.integrador.service.dto.tarifa.TarifaResponseDto;
-
 import io.swagger.v3.oas.annotations.Operation;
-
 import com.integrador.domain.Administrador;
 
 import java.util.Date;
@@ -42,7 +40,7 @@ public class AdministradorController {
 	    return new ModelAndView("redirect:/swagger-ui.html");
 	}
 	
-	
+	@Operation(summary = "Obtiene un administrador por su ID", description = "Devuelve un administrador basado en su ID.")
     @GetMapping("/{id}")
     public ResponseEntity<?> getById(@PathVariable Long id){
         try{
@@ -52,11 +50,15 @@ public class AdministradorController {
         }
 
     }
+	
+	@Operation(summary = "Obtiene todos los administradores", description = "Devuelve todos los administradores.")
     @GetMapping("")
-    public List<AdministradorResponseDto> findAll(){
+	public List<AdministradorResponseDto> findAll(){
         return this.administradorService.findAll();
     }
     
+  
+    @Operation(summary = "Alta administrador", description = "Da de alta un administrador.")
     @PostMapping("")
     public ResponseEntity<?> save (@RequestBody @Validated AdministradorRequestDto request) {
 	    try {
@@ -65,7 +67,8 @@ public class AdministradorController {
 	    	return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body("Ocurrio un error, revise los campos ingresados");
 	    } 
 	}   
-    
+  
+    @Operation(summary = "Update administrador", description = "Modifica un administrador.")
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@PathVariable Long id, @RequestBody @Validated AdministradorRequestDto request) {
         try {
@@ -81,6 +84,7 @@ public class AdministradorController {
     
 
     @DeleteMapping("/{id}")
+    @Operation(summary = "Eliminar administrador", description = "Elimina  un administrador por su Id.")
     public ResponseEntity<?> delete(@PathVariable Long id){
         try{
             this.administradorService.delete(id);
@@ -101,6 +105,8 @@ public class AdministradorController {
 	    } 
 	}  
     
+    @Operation(summary = "Eliminar monopatin.", description = "Se comunica con el microservicios de monopatines para "
+    		+ "eliminar un monopatin.")
     @DeleteMapping("/eliminarMonopatin/{idMonopatin}")
     public ResponseEntity<?> quitarMonopatin(@PathVariable Long idMonopatin){
         try{
@@ -114,6 +120,8 @@ public class AdministradorController {
     
     
     //trae los monopatines con mas de tantos km
+    @Operation(summary = "Monopatines por Km.", description = "Se comunica con el microservicios de monopatines"
+    		+ " para traerme los monopatines por Km.")
     @GetMapping("/monopatines/porKm/{cantKm}")
     public ResponseEntity<?> getMonopatinesPorKm(@PathVariable Long cantKm){
         try{
@@ -125,6 +133,8 @@ public class AdministradorController {
     }
     
   //trae los monopatines con mas de tanto tiempo, sin contar pausas
+    @Operation(summary = "Monopatines por cant. de Km sin pausa.", description = "Se comunica con el microservicios de monopatines para "
+    		+ " traerme los monopatines por tiempo sin pausa.")
     @GetMapping("/monopatines/porTiempoSinPausa/{cantKm}")
     public ResponseEntity<?> getMonopatinesPorTiempoSinPausa(@PathVariable Long cantKm){
         try{
@@ -135,7 +145,9 @@ public class AdministradorController {
 
     }
     
-  //trae los monopatines con mas de tanto tiempo, sin contar pausas
+  //trae los monopatines con mas de tanto tiempo, conn contar pausas
+    @Operation(summary = "Monopatines por cant. de Km con pausa.", description = "Se comunica con el microservicios de monopatines para "
+    		+ " traerme los monopatines por tiempo con pausa.")
     @GetMapping("/monopatines/porTiempoConPausa/{cantKm}")
     public ResponseEntity<?> getMonopatinesPorTiempoConPausa(@PathVariable Long cantKm){
         try{
@@ -147,6 +159,9 @@ public class AdministradorController {
     }
     
   //consultar los monopatines con más de X viajes en un cierto año
+    @Operation(summary = "Monopatines por cantidad de viajes de un determinado año.", description = "Se comunica "
+    		+ "con el microservicios de monopatines para "
+    		+ " traerme la cantidad de viajes de cada monopatín en un año determinado.")
     @GetMapping("/monopatines/conViajes/{cantViajes}/{anio}")
     public ResponseEntity<?> getMonopatinesConViajes(@PathVariable Long cantViajes, @PathVariable Integer anio){
         try{
@@ -159,6 +174,8 @@ public class AdministradorController {
     
     
     //consultar los monopatines en operacion y en mantenimiento
+    @Operation(summary = "Monopatines en operación y en mantenimiento.", description = "Se comunica con el microservicios de monopatines para "
+    		+ " traerme la cantidad de monopatines en operacion y los que estan en mantenimiento.")
     @GetMapping("/monopatines/enOperacionMantenimiento")
     public ResponseEntity<?> getMonopatinesOperacionMantenimiento(){
     	try{
@@ -170,6 +187,8 @@ public class AdministradorController {
     }
     
     //crear un parada
+    @Operation(summary = "Alta parada.", description = "Se comunica con el microservicios de paradas para "
+    		+ " dar de alta una parada.")
     @PostMapping("/paradas/agregarParada")
     public ResponseEntity<?> agregarParada (@RequestBody @Validated ParadaRequestDto request) {
 	    try {
@@ -181,6 +200,8 @@ public class AdministradorController {
     
     
     //quitar una parada
+    @Operation(summary = "Eliminar parada.", description = "Se comunica con el microservicios de paradas para "
+    		+ " eliminar una parada.")
     @DeleteMapping("/paradas/quitarParada/{idParada}")
     public ResponseEntity<?> eliminarParada (@PathVariable Long idParada){
         try{
@@ -193,6 +214,8 @@ public class AdministradorController {
     }
     
     //anular cuenta
+    @Operation(summary = "Anular cuenta", description = "Se comunica con el microservicios de cuentas para "
+    		+ " anularla.")
     @PutMapping("/cuentas/anularCuenta/{idCuenta}")
     public ResponseEntity<?> anularCuenta(@PathVariable Long idCuenta) {
         try {
@@ -205,6 +228,7 @@ public class AdministradorController {
     }
     
     //modificar tarifa
+    @Operation(summary = "Modificar tarifa.", description = " Se cambia el precio de las tarifas.")
     @PutMapping("/modificarTarifaEnFecha")
     public ResponseEntity<?> ModificarTarifaEnFecha (@RequestBody @Validated TarifaRequestDto request) {
         try {
@@ -220,6 +244,7 @@ public class AdministradorController {
     }
     
   //definir una tarifa, paso el id y precio que quiero definir
+    @Operation(summary = "Definir tarifa camún.", description = " Se da de alta el precio de la tarifa común.")
   	@PutMapping("/definirTarifaComun/{id}/{precio}")
       public ResponseEntity<?> definirTarifaComun (@PathVariable Long id, @PathVariable double precio) {
   	    try {
@@ -230,6 +255,7 @@ public class AdministradorController {
   	}   
   	
   	//definir una tarifa, paso el id y precio que quiero definir para la tarifa especial
+    	@Operation(summary = "Definir tarifa especial.", description = " Se da de alta el precio de la tarifa especial.")
   		@PutMapping("/definirTarifaEspecial/{id}/{precio}")
   	    public ResponseEntity<?> definirTarifaEspecial (@PathVariable Long id, @PathVariable double precio) {
   		    try {
@@ -240,6 +266,8 @@ public class AdministradorController {
   		}  
   		
   		//conocer la facturacion entre ciertos meses que vienen por parametro
+    	  @Operation(summary = "Facturación en un período determinado.", description = " Se comunica con el microservicios viajes "
+    	  		+ "para obtener un detalle de lo facturado en un período determinado que se solicita por parámetro.")
   		@GetMapping("/facturacion/{mesInicio}/{mesFin}")
  	   public ResponseEntity<?> facturacionEnMeses(@PathVariable Integer mesInicio, @PathVariable Integer mesFin){
  	        try{
