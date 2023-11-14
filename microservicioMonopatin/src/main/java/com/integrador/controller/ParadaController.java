@@ -20,6 +20,7 @@ import com.integrador.domain.Parada;
 import com.integrador.service.dto.parada.ParadaRequestDto;
 import com.integrador.service.dto.parada.ParadaResponseDto;
 
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -36,7 +37,8 @@ public class ParadaController {
         return this.paradaService.findAll();
     }
 
-	
+	  @Operation(summary = "Parada by Id.", description = " Devuelve una parada por su Id "
+		  		+ "en un determinado período")
 	 @GetMapping("/{id}")
 	   public ResponseEntity<?> getById(@PathVariable Long id){
 	        try{
@@ -47,7 +49,9 @@ public class ParadaController {
 	        
 	  }
 
-    //ver si funciona
+   
+	  @Operation(summary = "Alta parada.", description = " Da de alta una parada "
+		  		+ "en un determinado período")
     @PostMapping("")
     public ResponseEntity<?> save( @RequestBody @Validated ParadaRequestDto request ){
         try {
@@ -57,7 +61,8 @@ public class ParadaController {
         }
     }
      
-
+	  @Operation(summary = "Eliminar parada.", description = " Elimina una parada "
+		  		+ "en un determinado período")
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id){
         try{
@@ -68,7 +73,8 @@ public class ParadaController {
         }
     }
     
-    //chequear
+	  @Operation(summary = "Update parada.", description = " Modifica una parada "
+		  		+ "en un determinado período")
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@PathVariable Long id, @RequestBody @Validated ParadaRequestDto request) {
         try {

@@ -25,6 +25,6 @@ public class AppConfig {
                 .info(new Info().title("Api Administración-Mantenimiento")
                         .version(version)
                         .description(description)
-                        .license(new License().name("Administration API Licence")));
+                        .license(new License().name("Administracion Mantenimiento API Licence")));
     }
 }

@@ -16,11 +16,14 @@ import com.integrador.service.TarifaService;
 import com.integrador.service.dto.tarifa.TarifaRequestDto;
 import com.integrador.service.dto.tarifa.TarifaResponseDto;
 
+import io.swagger.v3.oas.annotations.Operation;
+
 public class TarifaController {
 	
 	@Autowired
 	private TarifaService tarifaService;
 	
+	@Operation(summary = "Tarifa find all.", description = " Devuelve un listado de las tarifas ")
 	@GetMapping("")
     public ResponseEntity<?> findAll(){
 		try {
@@ -33,7 +36,7 @@ public class TarifaController {
         }
     }
 
-	
+	 @Operation(summary = "Tarifa by Id", description = " Devuelve una tarifa por su Id ")
 	 @GetMapping("/{id}")
 	   public ResponseEntity<?> getById(@PathVariable Long id){
 	        try{
@@ -44,7 +47,7 @@ public class TarifaController {
 	        
 	  }
 
-    
+	 @Operation(summary = "Alta tarifa.", description = " Da de alta un tarifa ")
     @PostMapping("")
     public ResponseEntity<?> save( @RequestBody @Validated TarifaRequestDto request ){
         try {
@@ -54,6 +57,7 @@ public class TarifaController {
         }
     }
     
+	 @Operation(summary = "Eliminar tarifa.", description = " Elimina una tarifa ")
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id){
         try{
@@ -64,7 +68,7 @@ public class TarifaController {
         }
     }
     
-    
+	 @Operation(summary = "Update tarifa.", description = "Modifica una tarifa")
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@PathVariable Long id, @RequestBody @Validated TarifaRequestDto request) {
         try {

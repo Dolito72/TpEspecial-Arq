@@ -2,11 +2,12 @@ package com.integrador.service.exception;
 
 
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 @Getter
-@RequiredArgsConstructor
+@Data
 public class NotFoundException extends RuntimeException {
 
     private final String message;

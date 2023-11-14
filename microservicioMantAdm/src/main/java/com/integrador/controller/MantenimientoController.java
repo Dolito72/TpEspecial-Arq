@@ -20,7 +20,7 @@ import com.integrador.service.MantenimientoService;
 import com.integrador.service.dto.mantenimiento.MantenimientoRequestDto;
 import com.integrador.service.dto.mantenimiento.MantenimientoResponseDto;
 
-
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 
 
@@ -32,11 +32,13 @@ public class MantenimientoController {
 	@Autowired
 	private MantenimientoService mantenimientoService;
 	
+	 @Operation(summary ="Mantenimiento find All.", description = "Listado de mantenimiento ")
 	@GetMapping("")
     public List<MantenimientoResponseDto> findAll(){
         return this.mantenimientoService.findAll();
     }
 	
+	 @Operation(summary = "Mantenimiento find by Id.", description = " Trae un mantenimiento de acuerdo a su Id")
 	@GetMapping("/{id}")
     public ResponseEntity<?> getById(@PathVariable Long id){
         try{
@@ -47,6 +49,7 @@ public class MantenimientoController {
 
     }
 	//este va? o solo dejamos el agregar mantenimiento?
+	 @Operation(summary = "Alta mantenimiento.", description = " Da de alta un mantenimiento ")
 	@PostMapping("")
     public ResponseEntity<?> save (@RequestBody @Validated MantenimientoRequestDto request) {
 	    try {
@@ -55,7 +58,7 @@ public class MantenimientoController {
 	    	return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body("Ocurrio un error, revise los campos ingresados");
 	    } 
 	}   
-	
+	 @Operation(summary = "Eliminar mantenimiento.", description = "Elimina un mantenimiento ")
 	@DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id){
         try{
@@ -66,6 +69,7 @@ public class MantenimientoController {
         }
     }
 
+	 @Operation(summary = "Update mantenimiento.", description = " Modifica un mantenimiento ")
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@PathVariable Long id, @RequestBody @Validated MantenimientoRequestDto request) {
         try {
@@ -80,6 +84,9 @@ public class MantenimientoController {
     }
     
   //agregar un mantenimiento, a la tabla y setea el monopatin al q se le hace el mantenimientno
+	 
+	 @Operation(summary = "Alta monopatin a mantenimiento", description = " Se conecta al microservicio monopatin, para modificar al monopatín"
+	 		+ "en mantenimiento ") 
   	@PostMapping("/agregarMonopatinAMantenimiento/{idMonopatin}")
       public ResponseEntity<?> agregarMantenimiento (@PathVariable Long idMonopatin) {
   	    try {
@@ -90,6 +97,9 @@ public class MantenimientoController {
   	}   
   	
   //setea un mantenimiento como terminado y setea el monopatin como disponible
+	 @Operation(summary = "Finalizar mantenimiento monopatín.", description = "Se comunica con el microservicio"
+	 		+ "monopatin para modificar el estado del monopatin a mantenimiento finalizado y volver a su estado"
+	 		+ "disponible ")
   	@PostMapping("/finalizarMantenimiento/{idMantenimiento}")
       public ResponseEntity<?> finalizarMantenimiento (@PathVariable Long idMantenimiento) {
   	    try {	    

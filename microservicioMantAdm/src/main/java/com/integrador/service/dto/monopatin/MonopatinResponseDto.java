@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 @Data
 @RequiredArgsConstructor
-@NoArgsConstructor
+
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class MonopatinResponseDto {
 	//private final Long id;

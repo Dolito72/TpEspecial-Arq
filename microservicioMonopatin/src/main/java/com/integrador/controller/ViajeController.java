@@ -19,6 +19,7 @@ import com.integrador.domain.Viaje;
 import com.integrador.service.dto.viaje.ViajeRequestDto;
 import com.integrador.service.dto.viaje.ViajeResponseDto;
 
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -29,13 +30,15 @@ public class ViajeController {
 	@Autowired
 	private ViajeService viajeService;
 	
-	
+	  @Operation(summary = "Viajes find All.", description = " Lista todos los viajes "
+		  		+ "en un determinado período")
 	@GetMapping("")
     public List<ViajeResponseDto> findAll(){
         return this.viajeService.findAll();
     }
 
-	
+	  @Operation(summary = "Viaje por Id.", description = " Devuelve un viaje de acuerdo a su Id "
+		  		+ "en un determinado período")
 	 @GetMapping("/{id}")
 	   public ResponseEntity<?> getById(@PathVariable Long id){
 	        try{
@@ -46,6 +49,8 @@ public class ViajeController {
 	        
 	  }
 	 
+	 @Operation(summary = "Conectar usuario.", description = " Conecta un usuario a un viaje "
+		  		+ "en un determinado período")
 	 @GetMapping("/usuarios/{id}")
 	   public ResponseEntity<?> conectarUsuario(@PathVariable Long id){
 	        try{
@@ -56,7 +61,7 @@ public class ViajeController {
 	        
 	  }
 
-
+	  @Operation(summary = "Alta viaje.", description = " Da de alta un viaje ")
     @PostMapping("")
     public ResponseEntity<?> save( @RequestBody @Validated ViajeRequestDto request ){
         try {
@@ -66,6 +71,7 @@ public class ViajeController {
         }
     }
   
+	@Operation(summary = "Eliminar viaje.", description = " Elimina un viaje de acuerdo a su Id")
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id){
         try{
@@ -76,7 +82,7 @@ public class ViajeController {
         }
     }
     
-
+	 @Operation(summary = "Update viaje.", description = " Modifica  un viaje ")
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@PathVariable Long id, @RequestBody @Validated ViajeRequestDto request) {
         try {
@@ -90,6 +96,8 @@ public class ViajeController {
         }
     }
     
+	 @Operation(summary = "Facturación por período.", description = " Detalle de facturación en un período determinado que se pasa "
+	 		+ "por parámetros ")
     @GetMapping("/facturacion/{mesInicio}/{mesFin}")
 	   public ResponseEntity<?> facturacionEnMeses(@PathVariable Integer mesInicio, @PathVariable Integer mesFin){
 	        try{
